@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react'
+import Web3 from 'web3';
 
 
 function App() {
 
-  function detectAuthUser() {
+  function detectUserProvider() {
     let userProvider;
     if (window.etherium) {
       userProvider = window.etherium;
@@ -18,25 +19,21 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('eth:', detectAuthUser());
+    console.log('eth:', detectUserProvider());
   })
+
+
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          { }
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
       </header>
+      <main>
+        <h1>MetaMusk wallet Status</h1>
+        <button className="button">Get public key</button>
+        <p className='public-key'></p>
+      </main>
     </div>
   );
 }
