@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MetaMask-wallet-info/static/css/main.e4e7e26e.css",
+    "main.css": "/MetaMask-wallet-info/static/css/main.fb1eb6fa.css",
     "main.js": "/MetaMask-wallet-info/static/js/main.4901a762.js",
     "static/js/787.c80ec346.chunk.js": "/MetaMask-wallet-info/static/js/787.c80ec346.chunk.js",
     "static/media/MetaMaskLogo.png": "/MetaMask-wallet-info/static/media/MetaMaskLogo.30289624c0c1d284fbff.png",
     "index.html": "/MetaMask-wallet-info/index.html",
-    "main.e4e7e26e.css.map": "/MetaMask-wallet-info/static/css/main.e4e7e26e.css.map",
+    "main.fb1eb6fa.css.map": "/MetaMask-wallet-info/static/css/main.fb1eb6fa.css.map",
     "main.4901a762.js.map": "/MetaMask-wallet-info/static/js/main.4901a762.js.map",
     "787.c80ec346.chunk.js.map": "/MetaMask-wallet-info/static/js/787.c80ec346.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4e7e26e.css",
+    "static/css/main.fb1eb6fa.css",
     "static/js/main.4901a762.js"
   ]
 }
