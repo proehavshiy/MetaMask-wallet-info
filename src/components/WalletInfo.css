@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 20px;
 }
 
 .wallet-info__heading {
@@ -10,12 +11,14 @@
 }
 
 .wallet-info__list {
-  margin-top: 50px;
+  margin-top: 35px;
 }
 
 .wallet-info__item {
   font-size: 24px;
   margin-bottom: 20px;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .wallet-info__item>span {
