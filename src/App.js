@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+import pic from './img/MetaMaskLogo.png'
 import './App.css';
 import { useEffect, useState } from 'react'
 import Web3 from 'web3';
-import { v4 as uuidv4 } from 'uuid';
+import WalletInfo from './components/WalletInfo';
+import { NotLoginedError } from './errors/NotLoginedError';
 import { CONSTANTS_PHRASES } from './constants/constants'
 
 
@@ -35,12 +36,14 @@ function App() {
       : setStatusTitle(LOGINED)
   }, [])
 
-
   async function connectToMetaMask() {
     try {
       // disable button
       setIsBtnDisabled(true)
       const userProvider = detectMetamaskExtension()
+      if (!userProvider) {
+        throw new NotLoginedError()
+      }
 
       // You should only initiate a connection request in response to direct user action,
       // such as clicking a button.You should always disable the "connect" button while the connection request is pending.
@@ -60,12 +63,16 @@ function App() {
           data: publicKey[0],
         },
         {
-          name: 'balance',
-          data: ethBalance,
+          name: 'Balance',
+          data: ethBalance + ' eth',
         },
       ]);
     } catch (err) {
-      setStatusTitle(BADCONNECTION)
+      if (err instanceof NotLoginedError) {
+        setStatusTitle(NOTLOGINED)
+      } else {
+        setStatusTitle(BADCONNECTION)
+      }
     } finally {
       // enable button
       setIsBtnDisabled(false)
@@ -105,35 +112,30 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <main>
-        <div className='wrapper'>
-          <h1>Check your MetaMusk Wallet info</h1>
+    <main>
+      <div className='wrapper'>
+        <div className='content'>
+          <h1 className='heading'>Check your MetaMask Wallet info</h1>
           {
-            isConnected &&
-            <>
-              <h2 className='heading'>Details:</h2>
-              <ul className='wallet-info'>
-                {
-                  userInfo.map(item =>
-                    <li className='wallet-info__item' key={uuidv4()}>
-                      {item.name}: {item.data}
-                    </li>
-                  )
-                }
-              </ul>
-            </>
+            isConnected
+              ? <WalletInfo
+                data={userInfo}
+              />
+              : <img className='img' src={pic} alt='logo'></img>
           }
-          <button className='button' onClick={onClick} disabled={isBtnDisabled}>
-            {buttonTitle}
-          </button>
-          {
-            !isConnected &&
-            <p className='status'>{statusTitle}</p>
-          }
+          <div className='control'>
+            <button className='button' onClick={onClick} disabled={isBtnDisabled}>
+              {buttonTitle}
+            </button>
+            {
+              !isConnected &&
+              <p className='status'>{statusTitle}</p>
+            }
+          </div>
+
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 

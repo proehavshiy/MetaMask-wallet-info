@@ -1,0 +1,27 @@
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wallet-info__heading {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.wallet-info__list {
+  margin-top: 50px;
+}
+
+.wallet-info__item {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.wallet-info__item>span {
+  font-weight: bold;
+}
+
+.wallet-info__item:last-child {
+  margin-bottom: 0;
+}
